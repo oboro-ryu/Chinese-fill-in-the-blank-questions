@@ -119,40 +119,40 @@
 
 // export default MainComponent;
 "use client";
-import React from "react";
+
 
 function MainComponent() {
   const questions = [
-      {
-          question: "我想买一个____。",
-          answer: "苹果",
-          pinyin: "píngguǒ",
-          explanation: "私はリンゴを買いたいです。"
-      },
-      {
-          question: "我喜欢吃____。",
-          answer: "苹果",
-          pinyin: "píngguǒ",
-          explanation: "私はリンゴを食べるのが好きです。"
-      },
-      {
-          question: "今天的天气很____。",
-          answer: "好",
-          pinyin: "hǎo",
-          explanation: "今日の天気はとても良いです。"
-      },
-      {
-          question: "我喜欢____音乐。",
-          answer: "听",
-          pinyin: "tīng",
-          explanation: "私は音楽を聴くのが好きです。"
-      },
-      {
-          question: "天气预报说今天会____。",
-          answer: "下雨",
-          pinyin: "xià yǔ",
-          explanation: "天気予報では今日は雨が降ると言っています。"
-      }
+    {
+      question: "我想买一个____。",
+      answer: "苹果",
+      pinyin: "píngguǒ",
+      explanation: "私はリンゴを買いたいです。",
+    },
+    {
+      question: "我喜欢吃____。",
+      answer: "苹果",
+      pinyin: "píngguǒ",
+      explanation: "私はリンゴを食べるのが好きです。",
+    },
+    {
+      question: "今天的天气很____。",
+      answer: "好",
+      pinyin: "hǎo",
+      explanation: "今日の天気はとても良いです。",
+    },
+    {
+      question: "我喜欢____音乐。",
+      answer: "听",
+      pinyin: "tīng",
+      explanation: "私は音楽を聴くのが好きです。",
+    },
+    {
+      question: "天气预报说今天会____。",
+      answer: "下雨",
+      pinyin: "xià yǔ",
+      explanation: "天気予報では今日は雨が降ると言っています。",
+    },
   ];
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
@@ -172,7 +172,9 @@ function MainComponent() {
   const handleNextQuestion = () => {
     setCompleted(false);
     setUserInput("");
-    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+    setCurrentQuestionIndex(
+      (prevIndex) => (prevIndex + 1) % questions.length
+    );
   };
 
   return (
@@ -185,6 +187,7 @@ function MainComponent() {
         <div className="bg-white p-4 rounded shadow-lg border border-red-300">
           <h2 className="text-xl font-bold mb-2">填空</h2>
           <p className="mb-2">{currentQuestion.question}</p>
+          <p className="mb-2 text-gray-500">{currentQuestion.explanation}</p>
 
           <input
             type="text"
@@ -212,12 +215,10 @@ function MainComponent() {
                 </p>
               ) : (
                 <p className="text-red-500">
-                  不正解。正しい答えは {currentQuestion.answer} で、拼音は {currentQuestion.pinyin} です。
+                  不正解。正しい答えは {currentQuestion.answer} で、拼音は{" "}
+                  {currentQuestion.pinyin} です。
                 </p>
               )}
-
-              {/* 日本語の説明を表示 */}
-              <p className="mt-2">{currentQuestion.explanation}</p>
 
               <button
                 onClick={handleNextQuestion}
