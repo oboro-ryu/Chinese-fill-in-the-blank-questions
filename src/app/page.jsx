@@ -178,9 +178,7 @@ function MainComponent() {
   return (
     <div className="min-h-screen bg-red-100 font-sans">
       <nav className="bg-red-600 text-white p-4">
-        <h1 className="text-2xl font-bold">
-          HSK Level 3 中国語填空
-        </h1>
+        <h1 className="text-2xl font-bold">HSK Level 3 中国語填空</h1>
       </nav>
 
       <div className="container mx-auto p-4">
@@ -217,6 +215,9 @@ function MainComponent() {
                   不正解。正しい答えは {currentQuestion.answer} で、拼音は {currentQuestion.pinyin} です。
                 </p>
               )}
+
+              {/* 日本語の説明を表示 */}
+              <p className="mt-2">{currentQuestion.explanation}</p>
 
               <button
                 onClick={handleNextQuestion}
